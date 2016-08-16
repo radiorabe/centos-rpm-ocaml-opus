@@ -39,6 +39,10 @@ make install
 /usr/lib64/ocaml/opus/opus.cmi
 /usr/lib64/ocaml/opus/opus.cmxa
 /usr/lib64/ocaml/opus/opus.mli
+/usr/lib64/ocaml/opus/ogg_demuxer_opus_decoder.cmi
+/usr/lib64/ocaml/opus/ogg_demuxer_opus_decoder.cmx
+/usr/lib64/ocaml/opus/ogg_demuxer_opus_decoder.mli
+/usr/lib64/ocaml/opus/opus.cmx
 /usr/lib64/ocaml/opus/libopus_stubs.a
 /usr/lib64/ocaml/stublibs/dllopus_stubs.so
 /usr/lib64/ocaml/stublibs/dllopus_stubs.so.owner
