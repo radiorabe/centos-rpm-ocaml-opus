@@ -10,6 +10,7 @@ Source0:  https://github.com/savonet/ocaml-opus/releases/download/0.1.1/ocaml-op
 BuildRequires: ocaml
 BuildRequires: ocaml-findlib
 BuildRequires: ocaml-bytes
+BuildRequires: ocaml-ogg
 BuildRequires: opus-devel
 Requires:      opus
 
