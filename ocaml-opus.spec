@@ -1,15 +1,14 @@
 Name:     ocaml-opus
 
-Version:  0.1.1
+Version:  0.1.2
 Release:  1
 Summary:  OCaml bindings for opus
 License:  GPLv2+
 URL:      https://github.com/savonet/ocaml-opus
-Source0:  https://github.com/savonet/ocaml-opus/releases/download/0.1.1/ocaml-opus-0.1.1.tar.gz
+Source0:  https://github.com/savonet/ocaml-opus/releases/download/%{version}/ocaml-opus-%{version}.tar.gz
 
 BuildRequires: ocaml
 BuildRequires: ocaml-findlib
-BuildRequires: ocaml-bytes
 BuildRequires: ocaml-ogg
 BuildRequires: opus-devel
 Requires:      opus
