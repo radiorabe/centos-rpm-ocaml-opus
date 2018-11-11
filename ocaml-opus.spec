@@ -1,7 +1,9 @@
+%define debug_package %{nil}
+
 Name:     ocaml-opus
 
 Version:  0.1.2
-Release:  1
+Release:  2
 Summary:  OCaml bindings for opus
 License:  GPLv2+
 URL:      https://github.com/savonet/ocaml-opus
@@ -51,5 +53,8 @@ OCAML bindings for opus
 
 
 %changelog
+* Sun Nov 11 2018 Lucas Bickel <hairmare@rabe.ch> - 0.1.2-2
+- Fix Fedora build by disabling debug package
+
 * Sun Jul  3 2016 Lucas Bickel <hairmare@rabe.ch>
 - initial version, mostly stolen from https://www.openmamba.org/showfile.html?file=/pub/openmamba/devel/specs/ocaml-opus.spec
