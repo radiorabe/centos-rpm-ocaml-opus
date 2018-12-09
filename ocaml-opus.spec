@@ -1,22 +1,38 @@
 %define debug_package %{nil}
 
 Name:     ocaml-opus
-
 Version:  0.1.2
-Release:  2
+Release:  3%{?dist}
 Summary:  OCaml bindings for opus
+
+%global libname %(echo %{name} | sed -e 's/^ocaml-//')
+
 License:  GPLv2+
 URL:      https://github.com/savonet/ocaml-opus
 Source0:  https://github.com/savonet/ocaml-opus/releases/download/%{version}/ocaml-opus-%{version}.tar.gz
 
 BuildRequires: ocaml
 BuildRequires: ocaml-findlib
-BuildRequires: ocaml-ogg
+BuildRequires: ocaml-ogg-devel
 BuildRequires: opus-devel
 Requires:      opus
 
+
+%description
+OCAML bindings for opus
+
+
+%package        devel
+Summary:        Development files for %{name}
+Requires:       %{name} = %{version}-%{release}
+
+%description    devel
+The %{name}-devel package contains libraries and signature
+files for developing applications that use %{name}.
+
+
 %prep
-%setup -q 
+%autosetup -n %{name}-%{version}
 
 %build
 ./configure \
@@ -34,25 +50,30 @@ install -d $OCAMLFIND_DESTDIR/stublibs
 make install
 
 %files
-/usr/lib64/ocaml/opus/META
-/usr/lib64/ocaml/opus/opus.a
-/usr/lib64/ocaml/opus/opus.cma
-/usr/lib64/ocaml/opus/opus.cmi
-/usr/lib64/ocaml/opus/opus.cmxa
-/usr/lib64/ocaml/opus/opus.mli
-/usr/lib64/ocaml/opus/ogg_demuxer_opus_decoder.cmi
-/usr/lib64/ocaml/opus/ogg_demuxer_opus_decoder.cmx
-/usr/lib64/ocaml/opus/ogg_demuxer_opus_decoder.mli
-/usr/lib64/ocaml/opus/opus.cmx
-/usr/lib64/ocaml/opus/libopus_stubs.a
-/usr/lib64/ocaml/stublibs/dllopus_stubs.so
-/usr/lib64/ocaml/stublibs/dllopus_stubs.so.owner
+%license COPYING
+%{_libdir}/ocaml/%{libname}
+%{_libdir}/ocaml/stublibs/dll%{libname}_stubs.so
+%{_libdir}/ocaml/stublibs/dll%{libname}_stubs.so.owner
+%ifarch %{ocaml_native_compiler}
+%exclude %{_libdir}/ocaml/%{libname}/*.a
+%exclude %{_libdir}/ocaml/%{libname}/*.cmxa
+%exclude %{_libdir}/ocaml/%{libname}/*.cmx
+%exclude %{_libdir}/ocaml/%{libname}/*.mli
+%endif
 
-%description
-OCAML bindings for opus
-
+%files devel
+%license COPYING
+%ifarch %{ocaml_native_compiler}
+%{_libdir}/ocaml/%{libname}/*.a
+%{_libdir}/ocaml/%{libname}/*.cmxa
+%{_libdir}/ocaml/%{libname}/*.cmx
+%{_libdir}/ocaml/%{libname}/*.mli
+%endif
 
 %changelog
+* Sun Dec  9 2018 Lucas Bickel <hairmare@rabe.ch> - 0.1.2-3
+- Cleanup and add separate -devel subpackage
+
 * Sun Nov 11 2018 Lucas Bickel <hairmare@rabe.ch> - 0.1.2-2
 - Fix Fedora build by disabling debug package
 
