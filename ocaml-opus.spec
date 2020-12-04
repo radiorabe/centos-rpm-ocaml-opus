@@ -1,8 +1,8 @@
 %define debug_package %{nil}
 
 Name:     ocaml-opus
-Version:  0.1.2
-Release:  3%{?dist}
+Version:  0.1.3
+Release:  0.1%{?dist}
 Summary:  OCaml bindings for opus
 
 %global libname %(echo %{name} | sed -e 's/^ocaml-//')
@@ -71,6 +71,9 @@ make install
 %endif
 
 %changelog
+* Thu Dec 3 2020 Lucas Bickel <hairmare@rabe.ch> - 0.1.3-0.1
+- Bump to 0.1.3
+
 * Sun Dec  9 2018 Lucas Bickel <hairmare@rabe.ch> - 0.1.2-3
 - Cleanup and add separate -devel subpackage
 
